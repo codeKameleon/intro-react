@@ -1,3 +1,5 @@
+import AddTodo from './AddTodo';
+import TodoList from './TodoList';
 import './App.css';
 
 const App = () => {
@@ -8,20 +10,13 @@ const App = () => {
       </header>
 
       <main>
-        <div>
-          <input type="text" value="" placeholder="Type a new todo"/>
-          <button>Add Todo</button>
-        </div>
+        <AddTodo/>
 
-        <div>
+        <section>
           <h2>Todos</h2>
-          <ul>
-            <li>
-              <input type="checkbox" id="learn-react" />
-              <label htmlFor="learn-react">Learn React</label>
-            </li>
-          </ul>
-        </div>
+
+          <TodoList/>
+        </section>
       </main>
     </div>
   );
