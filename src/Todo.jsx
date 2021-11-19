@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Todo = () => {
+const Todo = (props) => {
     return ( 
         <li>
-            <input type="checkbox" id="learn-react" />
-            <label htmlFor="learn-react">Learn React</label>
+            <input type="checkbox" id="" />
+            <label htmlFor="">{props.name}</label>
         </li>
      );
 }
