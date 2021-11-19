@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import Todo from './Todo';
 
-const TodoList = props => {
+const TodoList = ({todos}) => {
     return ( 
         <div>
           <ul>
-              {props.todos.map(todo => (
-                <Todo key={todo} name={todo}/>
+              {todos.map(todo => (
+                <Todo key={todo.id} todo={todo}/>
               ))}
           </ul>
         </div>

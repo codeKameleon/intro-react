@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import {v4 as uuidv4} from 'uuid'
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
 
@@ -7,9 +7,14 @@ import './App.css';
 
 const App = () => {
   // Initializing the state
-  const initialTodos = ['My task 1', 'My task 2', 'My task 3'];
-  const [todos, setTodos] = useState(initialTodos)
+  const [todos, setTodos] = useState([])
 
+  // Update the state
+  const addTodo =  todo => {
+    setTodos([...todos, {id: uuidv4(), name: todo, completed: false}])
+  }
+  
+  console.log(todos)
   return (
     <div className="App">
       <header>
@@ -17,7 +22,7 @@ const App = () => {
       </header>
 
       <main>
-        <AddTodo/>
+        <AddTodo addTodo={addTodo}/>
 
         <section>
           <h2>Todos</h2>

@@ -1,10 +1,15 @@
 import React from 'react';
 
-const Todo = (props) => {
+const Todo = ({todo}) => {
+    const snakeCase = str => {
+        str = str.replace(/ /g,"_"); 
+        return str
+    }
+
     return ( 
-        <li>
-            <input type="checkbox" id="" />
-            <label htmlFor="">{props.name}</label>
+        <li id={todo.id}>
+            <input type="checkbox" id={snakeCase(todo.name)} />
+            <label htmlFor={snakeCase(todo.name)}>{todo.name}</label>
         </li>
      );
 }
