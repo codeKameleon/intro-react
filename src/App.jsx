@@ -1,8 +1,15 @@
+import React, { useState } from 'react'
+
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
+
 import './App.css';
 
 const App = () => {
+  // Initializing the state
+  const initialTodos = ['My task 1', 'My task 2', 'My task 3'];
+  const [todos, setTodos] = useState(initialTodos)
+
   return (
     <div className="App">
       <header>
@@ -15,7 +22,7 @@ const App = () => {
         <section>
           <h2>Todos</h2>
 
-          <TodoList/>
+          <TodoList todos={todos}/>  
         </section>
       </main>
     </div>

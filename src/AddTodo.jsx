@@ -6,7 +6,6 @@ const AddTodo = () => {
     const clickHandler = () => {
         const inputElement = inputRef.current
         const inputValue = inputElement.value
-        console.log(inputValue)
     }
 
     return ( 
