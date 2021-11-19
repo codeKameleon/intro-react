@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Todo = ({todo}) => {
+const Todo = ({todo, removeTodo}) => {
     const snakeCase = str => {
         str = str.replace(/ /g,"_"); 
         return str
@@ -10,6 +10,7 @@ const Todo = ({todo}) => {
         <li id={todo.id}>
             <input type="checkbox" id={snakeCase(todo.name)} />
             <label htmlFor={snakeCase(todo.name)}>{todo.name}</label>
+            <button onClick={() => removeTodo(todo)}>Remove</button>
         </li>
      );
 }

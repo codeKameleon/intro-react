@@ -1,13 +1,8 @@
-import React, { useState } from 'react'
-import Todo from './Todo';
-
-const TodoList = ({todos}) => {
+const TodoList = ({todos, renderItem}) => {
     return ( 
         <div>
           <ul>
-              {todos.map(todo => (
-                <Todo key={todo.id} todo={todo}/>
-              ))}
+              {todos.map(todo => renderItem(todo))}
           </ul>
         </div>
      );
