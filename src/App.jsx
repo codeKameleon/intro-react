@@ -9,19 +9,27 @@ import './App.css';
 const App = () => {
   // Initializing the state
   const [todos, setTodos] = useState([])
+  const [taskCompleted, setTaskCompleted] =  useState(false)
 
   // Updating the state
-
-    // Adding todos
-  const addTodo =  todo => {
-    setTodos([...todos, {id: uuidv4(), name: todo, completed: false}])
+    // Adding todosid: uuidv4()
+  const addTodo = todo => {
+    setTodos([...todos, {id: uuidv4(), name: todo, completed: taskCompleted}])
   }
 
-  // Removing todos
+    // Removing todos
   const removeTodo = todo => {
     setTodos(todos.filter(t => t.id !== todo.id))
   }
-  
+
+    // Change todo completion status
+  const updateCompletion = todo => {
+    console.log(todo.id)
+    // target the item clicked and change its completion status
+  }
+
+  console.log(todos)
+
   return (
     <div className="App">
       <header>
@@ -39,6 +47,7 @@ const App = () => {
               key={todo.id}
               todo={todo}
               removeTodo={removeTodo}
+              updateCompletion={updateCompletion}
               />
           )}
           />  
