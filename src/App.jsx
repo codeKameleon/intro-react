@@ -81,18 +81,23 @@ const App = () => {
           />  
         </section>
 
-        <section>
-          <h2>Tasks completed</h2>
+        {todosCompleted.length > 0 ? (
+          <section>
+            <h2>Tasks completed</h2>
 
-          <TodoList todos={todosCompleted} renderItem={todo => (
-            <Todo 
-            key={todo.id}
-            todo={todo}
-            removeTodo={removeTodo}
-            updateCompletion={updateCompletion}
-            />
-          )}/>
-        </section>
+            <TodoList todos={todosCompleted} renderItem={todo => (
+              <Todo 
+              key={todo.id}
+              todo={todo}
+              removeTodo={removeTodo}
+              updateCompletion={updateCompletion}
+              />
+            )}/>
+          </section> 
+          )
+          :
+          null
+        }
       </main>
     </div>
   );
