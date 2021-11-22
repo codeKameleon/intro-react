@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {v4 as uuidv4} from 'uuid';
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
 import Todo from './Todo';
 
 import './App.css';
+
+const LSKEY = 'MyTodoApp'
 
 const App = () => {
   // Initializing the state
@@ -37,6 +39,23 @@ const App = () => {
 
     todo.completed = !todo.completed
   }
+
+  // Save todos to localStorage
+  useEffect(() => {
+    window.localStorage.setItem(LSKEY + ".todos_to_complete", JSON.stringify(todosToComplete));
+  },[todosToComplete]);
+
+  useEffect(() => {
+    window.localStorage.setItem(LSKEY + ".todos_completed", JSON.stringify(todosCompleted));
+  }, [todosCompleted])
+
+  useEffect(() => {
+    const storedTodosToComplete = JSON.parse(localStorage.getItem(LSKEY + ".todos_to_complete"))
+    const storedTodosCompleted = JSON.parse(localStorage.getItem(LSKEY + ".todos_completed"))
+
+    setTodosToComplete(storedTodosToComplete)
+    setTodosCompleted(storedTodosCompleted)
+  },[])
 
   return (
     <div className="App">
