@@ -8,8 +8,8 @@ const Todo = ({todo, removeTodo, updateCompletion}) => {
 
     return ( 
         <li id={todo.id}>
-            <input onChange={() => updateCompletion(todo)} type="checkbox" id={snakeCase(todo.name)} />
-            <label htmlFor={snakeCase(todo.name)}>{todo.name}</label>
+            <input onChange={() => updateCompletion(todo)} type="checkbox" id={snakeCase(todo.name)} checked={todo.completed} />
+            <label className={todo.completed ? 'isCompleted' : 'isNotCompleted'} htmlFor={snakeCase(todo.name)}>{todo.name}</label>
             <button onClick={() => removeTodo(todo)}>Remove</button>
         </li>
      );

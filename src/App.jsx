@@ -8,27 +8,35 @@ import './App.css';
 
 const App = () => {
   // Initializing the state
-  const [todos, setTodos] = useState([])
-  const [taskCompleted, setTaskCompleted] =  useState(false)
+  const [todosToComplete, setTodosToComplete] = useState([])
+  const [todosCompleted, setTodosCompleted] = useState([])
 
   // Updating the state
-    // Adding todosid: uuidv4()
   const addTodo = todo => {
-    setTodos([...todos, {id: uuidv4(), name: todo, completed: taskCompleted}])
+    setTodosToComplete([...todosToComplete, {id: uuidv4(), name: todo, completed: false}])
   }
 
     // Removing todos
   const removeTodo = todo => {
-    setTodos(todos.filter(t => t.id !== todo.id))
+    if(todo.completed === false) {
+      setTodosToComplete(todosToComplete.filter(t => t.id !== todo.id))
+    } else {
+      setTodosCompleted(todosCompleted.filter(t => t.id !== todo.id))
+    }
   }
 
     // Change todo completion status
   const updateCompletion = todo => {
-    console.log(todo.id)
-    // target the item clicked and change its completion status
-  }
+    if(todo.completed === false) {
+      setTodosCompleted([...todosCompleted, todo])
+      setTodosToComplete(todos => todosToComplete.filter(todo => todo.completed === false))
+    } else {
+      setTodosToComplete([...todosToComplete, todo])
+      setTodosCompleted(todos => todosCompleted.filter(todo => todo.completed === true))
+    }
 
-  console.log(todos)
+    todo.completed = !todo.completed
+  }
 
   return (
     <div className="App">
@@ -42,7 +50,7 @@ const App = () => {
         <section>
           <h2>Todos</h2>
 
-          <TodoList todos={todos} renderItem={todo =>(
+          <TodoList todos={todosToComplete} renderItem={todo =>(
             <Todo 
               key={todo.id}
               todo={todo}
@@ -51,6 +59,19 @@ const App = () => {
               />
           )}
           />  
+        </section>
+
+        <section>
+          <h2>Tasks completed</h2>
+
+            <TodoList todos={todosCompleted} renderItem={todo => (
+              <Todo 
+              key={todo.id}
+              todo={todo}
+              removeTodo={removeTodo}
+              updateCompletion={updateCompletion}
+              />
+            )}/>
         </section>
       </main>
     </div>
