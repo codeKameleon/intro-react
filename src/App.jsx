@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import {v4 as uuidv4} from 'uuid';
-import AddTodo from './AddTodo';
-import TodoList from './TodoList';
-import Todo from './Todo';
+import AddTodo from './components/AddTodo/AddTodo';
+import TodoList from './components/TodoList/TodoList';
+import Todo from './components/Todo/Todo';
 
-import './App.css';
+import './App.scss';
 
 const LSKEY = 'MyTodoApp'
 

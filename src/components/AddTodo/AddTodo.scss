@@ -1,0 +1,30 @@
+.AddTodo {
+    input,
+    button {
+     height: 2rem;
+    }
+
+    input {
+        margin-right: 1rem;
+        padding: 1rem;
+        border: 1px solid #333;
+        outline: none;
+        transition: background-color .3s;
+
+        &:focus {
+            background-color: #eee;
+        }
+    }
+
+    button {
+        width: 100px;
+        background-color: olivedrab;
+        color: #fff;
+        border: 1px solid #333;
+        text-transform: uppercase;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }   
+}

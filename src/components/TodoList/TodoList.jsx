@@ -1,6 +1,8 @@
+import './TodoList.scss';
+
 const TodoList = ({todos, renderItem}) => {
     return ( 
-        <div>
+        <div className="TodoList">
           <ul>
               {todos.map(todo => renderItem(todo))}
           </ul>

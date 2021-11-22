@@ -3,7 +3,7 @@
 }
 
 body {
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 ul {
@@ -19,10 +19,9 @@ ul {
 }
 
 header {
-  width: 100%;
-  margin-bottom: 1rem;
-  padding: 1rem;
   text-align: center;
-  background-color: #333;
-  color: #fff;
+}
+
+section {
+  margin: 3rem 0;
 }
