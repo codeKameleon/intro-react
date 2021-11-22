@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
   box-sizing: border-box;
 }
 
 body {
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
 }
 
@@ -12,6 +15,16 @@ ul {
   list-style-type: none;
 }
 
+button {
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -19,7 +32,13 @@ ul {
 }
 
 header {
+  padding: 2rem 0;
+  width: 40%;
   text-align: center;
+}
+
+main {
+  width: 40%;
 }
 
 section {
