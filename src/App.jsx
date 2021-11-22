@@ -40,15 +40,7 @@ const App = () => {
     todo.completed = !todo.completed
   }
 
-  // Save todos to localStorage
-  useEffect(() => {
-    window.localStorage.setItem(LSKEY + ".todos_to_complete", JSON.stringify(todosToComplete));
-  },[todosToComplete]);
-
-  useEffect(() => {
-    window.localStorage.setItem(LSKEY + ".todos_completed", JSON.stringify(todosCompleted));
-  }, [todosCompleted])
-
+  // Get todos from localStorage
   useEffect(() => {
     const storedTodosToComplete = JSON.parse(localStorage.getItem(LSKEY + ".todos_to_complete"))
     const storedTodosCompleted = JSON.parse(localStorage.getItem(LSKEY + ".todos_completed"))
@@ -56,6 +48,15 @@ const App = () => {
     setTodosToComplete(storedTodosToComplete)
     setTodosCompleted(storedTodosCompleted)
   },[])
+
+  // Save todos to localStorage
+  useEffect(() => {
+    localStorage.setItem(LSKEY + ".todos_to_complete", JSON.stringify(todosToComplete));
+  },[todosToComplete]);
+
+  useEffect(() => {
+    localStorage.setItem(LSKEY + ".todos_completed", JSON.stringify(todosCompleted));
+  }, [todosCompleted])
 
   return (
     <div className="App">
@@ -83,14 +84,14 @@ const App = () => {
         <section>
           <h2>Tasks completed</h2>
 
-            <TodoList todos={todosCompleted} renderItem={todo => (
-              <Todo 
-              key={todo.id}
-              todo={todo}
-              removeTodo={removeTodo}
-              updateCompletion={updateCompletion}
-              />
-            )}/>
+          <TodoList todos={todosCompleted} renderItem={todo => (
+            <Todo 
+            key={todo.id}
+            todo={todo}
+            removeTodo={removeTodo}
+            updateCompletion={updateCompletion}
+            />
+          )}/>
         </section>
       </main>
     </div>
