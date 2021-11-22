@@ -13,7 +13,7 @@ const App = () => {
   const [todosToComplete, setTodosToComplete] = useState([])
   const [todosCompleted, setTodosCompleted] = useState([])
 
-  // Updating the state
+    // Updating the state
   const addTodo = todo => {
     setTodosToComplete([...todosToComplete, {id: uuidv4(), name: todo, completed: false}])
   }
@@ -61,29 +61,31 @@ const App = () => {
   return (
     <div className="App">
       <header>
-        <h1>My Todo App</h1>
+        <h1>Todos</h1>
+        <AddTodo addTodo={addTodo}/>
       </header>
 
       <main>
-        <AddTodo addTodo={addTodo}/>
-
-        <section>
-          <h2>Todos</h2>
-
-          <TodoList todos={todosToComplete} renderItem={todo =>(
-            <Todo 
-              key={todo.id}
-              todo={todo}
-              removeTodo={removeTodo}
-              updateCompletion={updateCompletion}
-              />
-          )}
-          />  
-        </section>
+        {todosToComplete.length > 0 ? (
+          <section>
+            <TodoList todos={todosToComplete} renderItem={todo =>(
+              <Todo 
+                key={todo.id}
+                todo={todo}
+                removeTodo={removeTodo}
+                updateCompletion={updateCompletion}
+                />
+              )}
+            />  
+          </section>
+          )
+          :
+          null
+        }
 
         {todosCompleted.length > 0 ? (
           <section>
-            <h2>Tasks completed</h2>
+            <h2>{todosCompleted.length} taks completed</h2>
 
             <TodoList todos={todosCompleted} renderItem={todo => (
               <Todo 
