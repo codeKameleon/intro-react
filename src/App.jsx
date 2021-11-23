@@ -68,7 +68,7 @@ const App = () => {
       <main>
         {todosToComplete.length > 0 ? (
           <section>
-            <TodoList todos={todosToComplete} renderItem={todo =>(
+            <TodoList todos={todosToComplete} renderItem={todo => (
               <Todo 
                 key={todo.id}
                 todo={todo}
@@ -85,7 +85,7 @@ const App = () => {
 
         {todosCompleted.length > 0 ? (
           <section>
-            <h2>{todosCompleted.length} taks completed</h2>
+            <h2>{todosCompleted.length} {todosCompleted.length < 2 ? 'task' : 'tasks'} completed</h2>
 
             <TodoList todos={todosCompleted} renderItem={todo => (
               <Todo 
