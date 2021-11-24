@@ -18,13 +18,19 @@ const App = () => {
     setTodosToComplete([...todosToComplete, {id: uuidv4(), name: todo, completed: false}])
   }
 
-    // Removing todos
+    // Removing todo
   const removeTodo = todo => {
     if(todo.completed === false) {
       setTodosToComplete(todosToComplete.filter(t => t.id !== todo.id))
     } else {
       setTodosCompleted(todosCompleted.filter(t => t.id !== todo.id))
     }
+  }
+
+    // Removing all todos (to complete & completed)
+  const clearTodos = () => {
+    setTodosToComplete([])
+    setTodosCompleted([])
   }
 
     // Change todo completion status
@@ -68,7 +74,9 @@ const App = () => {
       <main>
         {todosToComplete.length > 0 ? (
           <section>
-            <TodoList todos={todosToComplete} renderItem={todo => (
+            <TodoList 
+              todos={todosToComplete} 
+              renderItem={todo => (
               <Todo 
                 key={todo.id}
                 todo={todo}
@@ -99,6 +107,13 @@ const App = () => {
           )
           :
           null
+        }
+
+        {todosCompleted.length > 0 ? (
+          <button onClick={clearTodos} className="clear-btn">Clear</button>
+        )
+        : 
+        null
         }
       </main>
     </div>

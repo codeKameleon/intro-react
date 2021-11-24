@@ -52,7 +52,6 @@ button {
 
   header {
     @extend .global-spacing;
-    background-color: #fff;
     text-align: center;
 
     h1 {
@@ -66,5 +65,17 @@ button {
   
   section {
     margin-bottom: 2rem;
+  }
+
+  .clear-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 2rem;
+    margin: 2rem .5rem 0 auto;
+    padding: .5rem;
+    background-color: cornflowerblue;
+    color: #fff;
   }
 }
